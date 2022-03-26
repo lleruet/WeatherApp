@@ -5,18 +5,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="src/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Raleway:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
-  <body>
+  <body
+    style="
+      background: url(Images/clouds.jpg);
+      background-size: 100% 100% no repeats;
+    "
+  >
     <div class="container">
-      <h1>Test!</h1>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <div class="app">
+            <h1><strong>Today</strong></h1>
+
+            <p id="quote"></p>
+            <h2></h2>
+            <h4 id="current-temp">
+              Low 22°C/<a href="#" class="fahrenheit" id="low-farenheit">F</a>
+              <br /><strong
+                >High 29°C/<a href="#" class="fahrenheit" id="high-farenheit"
+                  >F</a
+                >
+              </strong>
+            </h4>
+            <p class="additionalParameters">
+             <p><span id="forcast"><strong> </strong>
+              </span></p>
+               <p><span id="wind"> </span>
+            </p>
+            <p><span id="humid"></span></p></p>
+            <br />
+            <div class="row">
+              <div class="col">
+                🌤
+                <div>Sun</div>
+                26°-<strong>30°</strong>
+              </div>
+
+              <div class="col">
+                🌥
+                <div>Mon</div>
+                24°-<strong>29°</strong>
+              </div>
+              <div class="col">
+                ☀
+                <div>Tue</div>
+                15°-<strong>27°</strong>
+              </div>
+              <div class="col">
+                🌦
+                <div>Wed</div>
+                19°- <strong>28°</strong>
+              </div>
+              <div class="col">
+                🌩
+                <div>Thu</div>
+                18°-<strong>29°</strong>
+              </div>
+            </div>
+            <br />
+            <br />
+            <div class="row">
+              <div class="col">
+                <form id="find-city-weather">
+                  <input
+                    type="text"
+                    id="city-name"
+                    placeholder="Enter a city..."
+                    autofocus="on"
+                  />
+                  <input type="submit" id="city-search" value="search" />
+                  <input type="submit" id="current-city" value="current" />
+                </form>
+              </div>
+            </div>
+          </div>
+          <br />
+          <footer>Created by Terri Eurell 2022, open-sourced on <a href="https://github.com/lleruet/Weather-Application" target="blank">GitHub</a></footer>
+        </div>
+        <div class="col"></div>
+      </div>
     </div>
+    <script src="src/script.js"></script>
   </body>
-  <script src="src/script.js"></script>
 </html>
+
