@@ -1,1 +1,52 @@
+body {
+  text-align: center;
+  position: relative;
+  font-family: "Lora", serif;
+  font-family: "Raleway", sans-serif;
+  color: #939397;
+  text-align: center;
+}
+.app {
+  background-color: #fcf8f8;
+  border: thick double #939397;
+  border-radius: 30px;
+  padding: 5%;
+  margin: 20% 0 0 0;
+}
+h1 {
+  line-height: 50px;
+  font-weight: 500;
+}
+.fahrenheit {
+  text-align: center;
+  position: relative;
+  font-family: "Lora", serif;
+  font-family: "Raleway", sans-serif;
+  color: #939397;
+  text-align: center;
+  text-decoration: none;
+}
+h2 {
+  font-size: smaller;
+}
 
+.quote {
+  font-size: smaller;
+  line-height: 15px;
+}
+h4 {
+}
+
+.additionalParameters {
+  font-size: smaller;
+}
+
+form {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+footer {
+  font-size: smaller;
+  color: #3b3b3f;
+}
