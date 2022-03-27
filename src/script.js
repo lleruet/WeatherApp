@@ -52,9 +52,44 @@ function currentTemp(response) {
   let h4 = document.querySelector("#current-temp");
   h4.innerHTML = `${roundCurrentTemp}°C`;
 
-  let location = response.data.name;
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `Today in ${location} it is time to hit the beach!`;
+  if (response.data.weather[0].description === "clear sky") {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    h1.innerHTML = `Get outdoors and stay sun safe today in ${location}!`;
+  } else if (
+    response.data.weather[0].description === "broken clouds" ||
+    "overcast" ||
+    "overcast clouds" ||
+    "few clouds"
+  ) {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    h1.innerHTML = `What a perfect day in ${location} for a movie marathon!`;
+  } else if (
+    response.data.weather[0].description === "light rain" ||
+    "rain" ||
+    "thunder storms" ||
+    "light intensity drizzle"
+  ) {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    h1.innerHTML = `Snuggle up with a book or go dancing in the rain in ${location} today!`;
+  } else if (
+    response.data.weather[0].description === "light snow" ||
+    "snow" ||
+    "heavy snow"
+  ) {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
+  }
+}
+
+function changeBackground(response) {
+  let currentBackground = document.querySelector("#background");
+
+  if (response.data.weather[0].description === "Clear skyes");
+  currentBackground.innerHTML = "url(Images / overcast.jpg)";
 }
 
 function displayMessage(event) {
