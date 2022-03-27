@@ -68,10 +68,11 @@ function currentTemp(response) {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
     currentDescription.innerHTML = `Outlook: ${description} 🌧`;
-  } else
+  } else if (
     response.data.weather[0].description === "light snow" ||
-      "snow" ||
-      "heavy snow";
+    "snow" ||
+    "heavy snow"
+  );
   let description = response.data.weather[0].description;
   let currentDescription = document.querySelector("#forcast");
   currentDescription.innerHTML = `Outlook: ${description} ❄`;
@@ -112,10 +113,11 @@ function currentTemp(response) {
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Snuggle up with a book or go dancing in the rain in ${location} today!`;
-  } else
+  } else if (
     response.data.weather[0].description === "light snow" ||
-      "snow" ||
-      "heavy snow";
+    "snow" ||
+    "heavy snow"
+  );
   let location = response.data.name;
   let h1 = document.querySelector("h1");
   document.body.style.backgroundImage = "url('Images/snow.jpg')";
