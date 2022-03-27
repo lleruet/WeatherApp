@@ -4,6 +4,7 @@ let today = document.querySelector("h2");
 let year = now.getFullYear();
 let hour = now.getHours();
 let mins = now.getMinutes();
+
 let months = [
   "January",
   "Febuary",
@@ -80,16 +81,10 @@ function currentTemp(response) {
     "heavy snow"
   ) {
     let location = response.data.name;
+    let background = document.querySelector("#background");
     let h1 = document.querySelector("h1");
     h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
   }
-}
-
-function changeBackground(response) {
-  let currentBackground = document.querySelector("#background");
-
-  if (response.data.weather[0].description === "Clear skyes");
-  currentBackground.innerHTML = "url(Images / overcast.jpg)";
 }
 
 function displayMessage(event) {
