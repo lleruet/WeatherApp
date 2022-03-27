@@ -45,9 +45,36 @@ function currentTemp(response) {
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Wind speed: ${wind}km/h`;
 
+  if (response.data.weather[0].description === "clear sky") {
+    let description = response.data.weather[0].description;
+    let currentDescription = document.querySelector("#forcast");
+    currentDescription.innerHTML = `Outlook: ${description} ☀`;
+  } else if (
+    response.data.weather[0].description === "broken clouds" ||
+    "overcast" ||
+    "overcast clouds" ||
+    "few clouds"
+  ) {
+    let description = response.data.weather[0].description;
+    let currentDescription = document.querySelector("#forcast");
+    currentDescription.innerHTML = `Outlook: ${description} 🌥`;
+  } else if (
+    response.data.weather[0].description === "light rain" ||
+    "rain" ||
+    "mist" ||
+    "thunder storms" ||
+    "light intensity drizzle"
+  ) {
+    let description = response.data.weather[0].description;
+    let currentDescription = document.querySelector("#forcast");
+    currentDescription.innerHTML = `Outlook: ${description} 🌧`;
+  } else
+    response.data.weather[0].description === "light snow" ||
+      "snow" ||
+      "heavy snow";
   let description = response.data.weather[0].description;
   let currentDescription = document.querySelector("#forcast");
-  currentDescription.innerHTML = `Outlook: ${description}`;
+  currentDescription.innerHTML = `Outlook: ${description} ❄`;
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
   let h4 = document.querySelector("#current-temp");
@@ -56,6 +83,9 @@ function currentTemp(response) {
   if (response.data.weather[0].description === "clear sky") {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
+    document.body.style.backgroundImage = "url('Images/clear skies.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Get outdoors and stay sun safe today in ${location}!`;
   } else if (
     response.data.weather[0].description === "broken clouds" ||
@@ -65,26 +95,33 @@ function currentTemp(response) {
   ) {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
+    document.body.style.backgroundImage = "url('Images/storm.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
     h1.innerHTML = `What a perfect day in ${location} for a movie marathon!`;
   } else if (
     response.data.weather[0].description === "light rain" ||
     "rain" ||
+    "mist" ||
     "thunder storms" ||
     "light intensity drizzle"
   ) {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
+    document.body.style.backgroundImage = "url('Images/storm.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Snuggle up with a book or go dancing in the rain in ${location} today!`;
-  } else if (
+  } else
     response.data.weather[0].description === "light snow" ||
-    "snow" ||
-    "heavy snow"
-  ) {
-    let location = response.data.name;
-    let background = document.querySelector("#background");
-    let h1 = document.querySelector("h1");
-    h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
-  }
+      "snow" ||
+      "heavy snow";
+  let location = response.data.name;
+  let h1 = document.querySelector("h1");
+  document.body.style.backgroundImage = "url('Images/snow.jpg')";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+  h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
 }
 
 function displayMessage(event) {
