@@ -72,10 +72,11 @@ function currentTemp(response) {
     response.data.weather[0].description === "light snow" ||
     "snow" ||
     "heavy snow"
-  );
-  let description = response.data.weather[0].description;
-  let currentDescription = document.querySelector("#forcast");
-  currentDescription.innerHTML = `Outlook: ${description} ❄`;
+  ) {
+    let description = response.data.weather[0].description;
+    let currentDescription = document.querySelector("#forcast");
+    currentDescription.innerHTML = `Outlook: ${description} ❄`;
+  }
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
   let h4 = document.querySelector("#current-temp");
@@ -117,13 +118,14 @@ function currentTemp(response) {
     response.data.weather[0].description === "light snow" ||
     "snow" ||
     "heavy snow"
-  );
-  let location = response.data.name;
-  let h1 = document.querySelector("h1");
-  document.body.style.backgroundImage = "url('Images/snow.jpg')";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
-  h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
+  ) {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    document.body.style.backgroundImage = "url('Images/snow.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+    h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
+  }
 }
 
 function displayMessage(event) {
