@@ -127,6 +127,7 @@ function currentTemp(response) {
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
   }
+  displayForcast();
 }
 
 function displayMessage(event) {
@@ -172,3 +173,35 @@ function convert(event) {
 
 let farenheitToday = document.querySelector("#farenheit");
 farenheitToday.addEventListener = ("click", convert);
+
+function displayForcast() {
+  let forcast = document.querySelector("#five-day-forcast");
+  forcast.innerHTML = `<div class="row">
+              <div class="col">
+                🌤
+                <div>Sun</div>
+                26°-<strong>30°</strong>
+              </div>
+
+              <div class="col">
+                🌥
+                <div>Mon</div>
+                24°-<strong>29°</strong>
+              </div>
+              <div class="col">
+                ☀
+                <div>Tue</div>
+                15°-<strong>27°</strong>
+              </div>
+              <div class="col">
+                🌦
+                <div>Wed</div>
+                19°- <strong>28°</strong>
+              </div>
+              <div class="col">
+                🌩
+                <div>Thu</div>
+                18°-<strong>29°</strong>
+              </div>
+            </div>`;
+}
