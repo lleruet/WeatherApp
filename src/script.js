@@ -48,7 +48,7 @@ function currentTemp(response) {
   if (response.data.weather[0].description === "clear sky") {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: ${description} ☀`;
+    currentDescription.innerHTML = `Outlook: ☀ ${description}`;
   } else if (
     response.data.weather[0].description === "broken clouds" ||
     "overcast" ||
@@ -57,7 +57,7 @@ function currentTemp(response) {
   ) {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: ${description} 🌥`;
+    currentDescription.innerHTML = `Outlook: 🌥 ${description}`;
   } else if (
     response.data.weather[0].description === "light rain" ||
     "rain" ||
@@ -67,7 +67,7 @@ function currentTemp(response) {
   ) {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: ${description} 🌧`;
+    currentDescription.innerHTML = `Outlook: 🌧 ${description}`;
   } else if (
     response.data.weather[0].description === "light snow" ||
     "snow" ||
@@ -75,7 +75,7 @@ function currentTemp(response) {
   ) {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: ${description} ❄`;
+    currentDescription.innerHTML = `Outlook: ❄ ${description}`;
   }
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
