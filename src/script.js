@@ -53,7 +53,8 @@ function currentTemp(response) {
     response.data.weather[0].description === "broken clouds" ||
     "overcast" ||
     "overcast clouds" ||
-    "few clouds"
+    "few clouds" ||
+    "scattered clouds"
   ) {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
@@ -80,7 +81,7 @@ function currentTemp(response) {
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
   let h4 = document.querySelector("#current-temp");
-  h4.innerHTML = `${roundCurrentTemp}°C`;
+  h4.innerHTML = `${roundCurrentTemp}°C/${farenheitToday}`;
 
   if (response.data.weather[0].description === "clear sky") {
     let location = response.data.name;
@@ -161,3 +162,13 @@ function currentLocationTemp() {
 
 let currentCityButton = document.querySelector("#current-city");
 currentCityButton.addEventListener("click", currentLocationTemp);
+
+function convert(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((roundCurrentTemp * 9) / 5 + 32);
+  let h4 = document.querySelector("h4");
+  h4.innerHTML = `${fahrenheitTemperature}F`;
+}
+
+let farenheitToday = document.querySelector("#farenheit");
+farenheitToday.addEventListener = ("click", convert);
