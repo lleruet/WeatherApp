@@ -97,7 +97,7 @@ function currentTemp(response) {
   ) {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
-    document.body.style.backgroundImage = "url('Images/storm.jpg')";
+    document.body.style.backgroundImage = "url('Images/overcast.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `What a perfect day in ${location} for a movie marathon!`;
