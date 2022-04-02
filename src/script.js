@@ -90,6 +90,7 @@ function currentTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
   let h4 = document.querySelector("#current-temp");
