@@ -169,14 +169,14 @@ function displayForcast() {
 
   let fullForecast = `<div class="row">`;
 
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fir"];
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fir", "Sat", "Sun"];
   days.forEach(function (day) {
     fullForecast =
       fullForecast +
       `<div class="col">
                 🌤
-                <div>Sun</div>
-                26°-<strong>30°</strong>
+                <div>${day}</div>
+                20°-<strong>30°</strong>
               </div>`;
   });
   fullForecast = fullForecast + `</div>`;
