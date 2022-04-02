@@ -171,7 +171,8 @@ function displayForcast() {
 
   let days = ["Mon", "Tue", "Wed", "Thu", "Fir"];
   days.forEach(function (day) {
-    fullForecast +
+    fullForecast =
+      fullForecast +
       `<div class="col">
                 🌤
                 <div>Sun</div>
