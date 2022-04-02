@@ -127,7 +127,17 @@ function currentTemp(response) {
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
   }
+  getForecast(response.data.coord);
   displayForcast();
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let units = "&units=metric";
+  let apiKey = "d02001f5620297c6aecba2d545033953";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}${units}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForcast);
 }
 
 function displayMessage(event) {
@@ -164,7 +174,8 @@ function currentLocationTemp() {
 let currentCityButton = document.querySelector("#current-city");
 currentCityButton.addEventListener("click", currentLocationTemp);
 
-function displayForcast() {
+function displayForcast(response) {
+  console.log(response.data.daily.temp);
   let forecast = document.querySelector("#five-day-forecast");
 
   let fullForecast = `<div class="row">`;
