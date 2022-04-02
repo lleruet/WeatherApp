@@ -3,8 +3,13 @@ let now = new Date();
 let today = document.querySelector("h2");
 let year = now.getFullYear();
 let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
 let mins = now.getMinutes();
-
+if (mins < 10) {
+  mins = `0${mins}`;
+}
 let months = [
   "January",
   "Febuary",
@@ -34,7 +39,7 @@ let days = [
 ];
 let day = days[now.getDay()];
 
-today.innerHTML = `${hour}:${mins}, ${day} ${dayNumber}, ${month}, ${year}`;
+today.innerHTML = `${hour}:${mins}, ${day}, ${month} ${dayNumber}, ${year}`;
 
 function currentTemp(response) {
   let humidity = response.data.main.humidity;
@@ -43,7 +48,7 @@ function currentTemp(response) {
 
   let wind = response.data.wind.speed;
   let currentWind = document.querySelector("#wind");
-  currentWind.innerHTML = `Wind speed: ${wind}km/h`;
+  currentWind.innerHTML = `Wind speed: ${Math.round(wind)}km/h`;
 
   if (response.data.weather[0].description === "clear sky") {
     let description = response.data.weather[0].description;
@@ -92,18 +97,6 @@ function currentTemp(response) {
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Get outdoors and stay sun safe today in ${location}!`;
   } else if (
-    response.data.weather[0].description === "broken clouds" ||
-    "overcast" ||
-    "overcast clouds" ||
-    "few clouds"
-  ) {
-    let location = response.data.name;
-    let h1 = document.querySelector("h1");
-    document.body.style.backgroundImage = "url('Images/overcast.jpg')";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundSize = "cover";
-    h1.innerHTML = `What a perfect day in ${location} for a movie marathon!`;
-  } else if (
     response.data.weather[0].description === "light rain" ||
     "rain" ||
     "mist" ||
@@ -115,7 +108,19 @@ function currentTemp(response) {
     document.body.style.backgroundImage = "url('Images/storm.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
-    h1.innerHTML = `Snuggle up with a book or go dancing in the rain in ${location} today!`;
+    h1.innerHTML = `Snuggle up with a book or go dancing in the rain in ${location}!`;
+  } else if (
+    response.data.weather[0].description === "broken clouds" ||
+    "overcast" ||
+    "overcast clouds" ||
+    "few clouds"
+  ) {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    document.body.style.backgroundImage = "url('Images/overcast.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+    h1.innerHTML = `What a perfect day in ${location} for a movie marathon!`;
   } else if (
     response.data.weather[0].description === "light snow" ||
     "snow" ||
@@ -129,7 +134,9 @@ function currentTemp(response) {
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Snow men and sledding, it will be a winter wonderland in ${location} today!`;
   }
+
   getForecast(response.data.coord);
+
   displayForcast();
 }
 

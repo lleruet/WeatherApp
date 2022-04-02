@@ -17,15 +17,7 @@ h1 {
   line-height: 50px;
   font-weight: 500;
 }
-.fahrenheit {
-  text-align: center;
-  position: relative;
-  font-family: "Lora", serif;
-  font-family: "Raleway", sans-serif;
-  color: #939397;
-  text-align: center;
-  text-decoration: none;
-}
+
 h2 {
   font-size: medium;
 }
@@ -34,11 +26,10 @@ h2 {
   font-size: smaller;
   line-height: 15px;
 }
-h4 {
-}
 
 .additionalParameters {
   font-size: smaller;
+  text-transform: capitalize;
 }
 
 form {
