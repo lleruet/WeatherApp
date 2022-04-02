@@ -164,6 +164,48 @@ function currentLocationTemp() {
 let currentCityButton = document.querySelector("#current-city");
 currentCityButton.addEventListener("click", currentLocationTemp);
 
+function displayForcast() {
+  let forecast = document.querySelector("#five-day-forecast");
+  let fullForecast = `<div class="row">`;
+  fullForecast =
+    fullForecast +
+    `<div class="col">
+                🌤
+                <div>Sun</div>
+                26°-<strong>30°</strong>
+              </div>`;
+  fullForecast =
+    fullForecast +
+    `<div class="col">
+                🌤
+                <div>Sun</div>
+                26°-<strong>30°</strong>
+              </div>`;
+  fullForecast =
+    fullForecast +
+    `<div class="col">
+                🌤
+                <div>Sun</div>
+                26°-<strong>30°</strong>
+              </div>`;
+  fullForecast =
+    fullForecast +
+    `<div class="col">
+                🌤
+                <div>Sun</div>
+                26°-<strong>30°</strong>
+              </div>`;
+  fullForecast =
+    fullForecast +
+    `<div class="col">
+                🌤
+                <div>Sun</div>
+                26°-<strong>30°</strong>
+              </div>`;
+  fullForecast = fullForecast + `</div>`;
+  forecast.innerHTML = fullForecast;
+}
+
 function convert(event) {
   event.preventDefault();
   let fahrenheitTemperature = Math.round((roundCurrentTemp * 9) / 5 + 32);
@@ -173,35 +215,3 @@ function convert(event) {
 
 let farenheitToday = document.querySelector("#farenheit");
 farenheitToday.addEventListener = ("click", convert);
-
-function displayForcast() {
-  let forcast = document.querySelector("#five-day-forcast");
-  forcast.innerHTML = `<div class="row">
-              <div class="col">
-                🌤
-                <div>Sun</div>
-                26°-<strong>30°</strong>
-              </div>
-
-              <div class="col">
-                🌥
-                <div>Mon</div>
-                24°-<strong>29°</strong>
-              </div>
-              <div class="col">
-                ☀
-                <div>Tue</div>
-                15°-<strong>27°</strong>
-              </div>
-              <div class="col">
-                🌦
-                <div>Wed</div>
-                19°- <strong>28°</strong>
-              </div>
-              <div class="col">
-                🌩
-                <div>Thu</div>
-                18°-<strong>29°</strong>
-              </div>
-            </div>`;
-}
