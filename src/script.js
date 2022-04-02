@@ -50,40 +50,9 @@ function currentTemp(response) {
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Wind speed: ${Math.round(wind)}km/h`;
 
-  if (response.data.weather[0].description === "clear sky") {
-    let description = response.data.weather[0].description;
-    let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: ${description}`;
-  } else if (
-    response.data.weather[0].description === "broken clouds" ||
-    "overcast" ||
-    "overcast clouds" ||
-    "few clouds" ||
-    "scattered clouds"
-  ) {
-    let description = response.data.weather[0].description;
-    let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: 🌥 ${description}`;
-  } else if (
-    response.data.weather[0].description === "light rain" ||
-    "rain" ||
-    "mist" ||
-    "thunder storms" ||
-    "light intensity drizzle"
-  ) {
-    let description = response.data.weather[0].description;
-    let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: 🌧 ${description}`;
-  } else if (
-    response.data.weather[0].description === "light snow" ||
-    "snow" ||
-    "heavy snow" ||
-    "light shower snow"
-  ) {
-    let description = response.data.weather[0].description;
-    let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: ❄ ${description}`;
-  }
+  let description = response.data.weather[0].description;
+  let currentDescription = document.querySelector("#forcast");
+  currentDescription.innerHTML = `Outlook: ${description}`;
 
   let currentIcon = document.querySelector("#icon");
   currentIcon.setAttribute(
@@ -96,50 +65,51 @@ function currentTemp(response) {
   let h4 = document.querySelector("#current-temp");
   h4.innerHTML = `${roundCurrentTemp}°C`;
 
-  if (response.data.weather[0].description === "clear sky") {
+  if (response.data.weather[0].main === "Clear") {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
     document.body.style.backgroundImage = "url('Images/clear skies.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Get outdoors and stay sun safe today in ${location}!`;
-  } else if (
-    response.data.weather[0].description === "light rain" ||
-    "rain" ||
-    "mist" ||
-    "thunder storms" ||
-    "light intensity drizzle"
-  ) {
+  } else if (response.data.weather[0].main === "Rain" || "Drizzle") {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    document.body.style.backgroundImage = "url('Images/rain.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+    h1.innerHTML = `Snuggle up with a book or go dancing in the rain in ${location}!`;
+  } else if (response.data.weather[0].main === "Thunderstorm") {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
     document.body.style.backgroundImage = "url('Images/storm.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
-    h1.innerHTML = `Snuggle up with a book or go dancing in the rain in ${location}!`;
-  } else if (
-    response.data.weather[0].description === "broken clouds" ||
-    "overcast" ||
-    "overcast clouds" ||
-    "few clouds"
-  ) {
+    h1.innerHTML = `Thunderbolts of lightening very, very, frightening today in ${location}!`;
+  } else if (response.data.weather[0].main === "Clouds") {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
     document.body.style.backgroundImage = "url('Images/overcast.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `What a perfect day in ${location} for a movie marathon!`;
-  } else if (
-    response.data.weather[0].description === "light snow" ||
-    "snow" ||
-    "heavy snow" ||
-    "light shower snow"
-  ) {
+  } else if (response.data.weather[0].main === "Snow") {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
     document.body.style.backgroundImage = "url('Images/snow.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Snow men and sledding, it will be a winter wonderland in ${location} today!`;
+  } else if (
+    response.data.weather[0].main === "Mist" ||
+    "Dust" ||
+    "Haze" ||
+    "Fog"
+  ) {
+    let location = response.data.name;
+    let h1 = document.querySelector("h1");
+    document.body.style.backgroundImage = "url('Images/mist.jpg')";
+    h1.innerHTML = `Stay safe on the roads to day in ${location}!`;
   }
 
   getForecast(response.data.coord);
@@ -148,11 +118,9 @@ function currentTemp(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let units = "&units=metric";
   let apiKey = "d02001f5620297c6aecba2d545033953";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}${units}`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForcast);
 }
 
@@ -195,11 +163,13 @@ function displayForcast(response) {
   let fullForecast = `<div class="row">`;
   let daysForecast = response.data.daily;
   daysForecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index < 4) {
       fullForecast =
         fullForecast +
         `<div class="col">
-                ${forecastDay.weather[0].icon}
+                <img src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }" alt="" class="weatherIcon" id="icon" />img 
                 <div>${formatForecastDay(forecastDay.dt)}</div>
                 ${Math.round(forecastDay.temp.min)}°-<strong>${Math.round(
           forecastDay.temp.max
