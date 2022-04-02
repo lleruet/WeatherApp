@@ -195,7 +195,12 @@ function displayForcast(response) {
   forecast.innerHTML = fullForecast;
 }
 
-function formatForecastDay(timestamp) {}
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 
 function convert(event) {
   event.preventDefault();
