@@ -166,42 +166,18 @@ currentCityButton.addEventListener("click", currentLocationTemp);
 
 function displayForcast() {
   let forecast = document.querySelector("#five-day-forecast");
+
   let fullForecast = `<div class="row">`;
-  fullForecast =
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fir"];
+  days.forEach(function (day) {
     fullForecast +
-    `<div class="col">
+      `<div class="col">
                 🌤
                 <div>Sun</div>
                 26°-<strong>30°</strong>
               </div>`;
-  fullForecast =
-    fullForecast +
-    `<div class="col">
-                🌤
-                <div>Sun</div>
-                26°-<strong>30°</strong>
-              </div>`;
-  fullForecast =
-    fullForecast +
-    `<div class="col">
-                🌤
-                <div>Sun</div>
-                26°-<strong>30°</strong>
-              </div>`;
-  fullForecast =
-    fullForecast +
-    `<div class="col">
-                🌤
-                <div>Sun</div>
-                26°-<strong>30°</strong>
-              </div>`;
-  fullForecast =
-    fullForecast +
-    `<div class="col">
-                🌤
-                <div>Sun</div>
-                26°-<strong>30°</strong>
-              </div>`;
+  });
   fullForecast = fullForecast + `</div>`;
   forecast.innerHTML = fullForecast;
 }
