@@ -82,8 +82,7 @@ function currentTemp(response) {
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
   let h4 = document.querySelector("#current-temp");
-  let farenheitToday = "X";
-  h4.innerHTML = `${roundCurrentTemp}°C/${farenheitToday}`;
+  h4.innerHTML = `${roundCurrentTemp}°C`;
 
   if (response.data.weather[0].description === "clear sky") {
     let location = response.data.name;
