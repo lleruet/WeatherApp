@@ -169,7 +169,10 @@ function displayForcast(response) {
         `<div class="col">
                 <img src="http://openweathermap.org/img/wn/${
                   forecastDay.weather[0].icon
-                }" alt="" class="weatherIcon" id="icon" />img 
+                }@2x.png"
+                alt="" class="weatherIcon" id="icon"
+                Width ="40"/>
+
                 <div>${formatForecastDay(forecastDay.dt)}</div>
                 ${Math.round(forecastDay.temp.min)}°-<strong>${Math.round(
           forecastDay.temp.max
