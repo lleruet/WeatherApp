@@ -31,7 +31,9 @@ h2 {
   font-size: smaller;
   text-transform: capitalize;
 }
-
+.weatherIcon {
+  filter: brightness(0.3) opacity(40%);
+}
 form {
   display: block;
   margin: 0 auto;
