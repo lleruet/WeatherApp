@@ -186,9 +186,9 @@ function displayForcast(response) {
       `<div class="col">
                 ${forecastDay.weather[0].icon}
                 <div>${formatForecastDay(forecastDay.dt)}</div>
-                ${forecastDay.temp.min}°-<strong>${
+                ${Math.round(forecastDay.temp.min)}°-<strong>${Math.round(
         forecastDay.temp.max
-      }°</strong>
+      )}°</strong>
               </div>`;
   });
   fullForecast = fullForecast + `</div>`;
