@@ -72,7 +72,8 @@ function currentTemp(response) {
   } else if (
     response.data.weather[0].description === "light snow" ||
     "snow" ||
-    "heavy snow"
+    "heavy snow" ||
+    "light shower snow"
   ) {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
@@ -81,6 +82,7 @@ function currentTemp(response) {
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
   let h4 = document.querySelector("#current-temp");
+  let farenheitToday = "X";
   h4.innerHTML = `${roundCurrentTemp}°C/${farenheitToday}`;
 
   if (response.data.weather[0].description === "clear sky") {
@@ -118,14 +120,15 @@ function currentTemp(response) {
   } else if (
     response.data.weather[0].description === "light snow" ||
     "snow" ||
-    "heavy snow"
+    "heavy snow" ||
+    "light shower snow"
   ) {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
     document.body.style.backgroundImage = "url('Images/snow.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
-    h1.innerHTML = `Snow men and sledding it'll be a winter wonderland in ${location}!`;
+    h1.innerHTML = `Snow men and sledding, it will be a winter wonderland in ${location} today!`;
   }
   getForecast(response.data.coord);
   displayForcast();
@@ -176,20 +179,20 @@ currentCityButton.addEventListener("click", currentLocationTemp);
 
 function displayForcast(response) {
   let forecast = document.querySelector("#five-day-forecast");
-
   let fullForecast = `<div class="row">`;
-
   let daysForecast = response.data.daily;
-  daysForecast.forEach(function (forecastDay) {
-    fullForecast =
-      fullForecast +
-      `<div class="col">
+  daysForecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      fullForecast =
+        fullForecast +
+        `<div class="col">
                 ${forecastDay.weather[0].icon}
                 <div>${formatForecastDay(forecastDay.dt)}</div>
                 ${Math.round(forecastDay.temp.min)}°-<strong>${Math.round(
-        forecastDay.temp.max
-      )}°</strong>
+          forecastDay.temp.max
+        )}°</strong>
               </div>`;
+    }
   });
   fullForecast = fullForecast + `</div>`;
   forecast.innerHTML = fullForecast;
@@ -201,13 +204,3 @@ function formatForecastDay(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
-
-function convert(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = Math.round((roundCurrentTemp * 9) / 5 + 32);
-  let h4 = document.querySelector("h4");
-  h4.innerHTML = `${fahrenheitTemperature}F`;
-}
-
-let farenheitToday = document.querySelector("#farenheit");
-farenheitToday.addEventListener = ("click", convert);
