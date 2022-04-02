@@ -53,7 +53,7 @@ function currentTemp(response) {
   if (response.data.weather[0].description === "clear sky") {
     let description = response.data.weather[0].description;
     let currentDescription = document.querySelector("#forcast");
-    currentDescription.innerHTML = `Outlook: ☀ ${description}`;
+    currentDescription.innerHTML = `Outlook: ${description}`;
   } else if (
     response.data.weather[0].description === "broken clouds" ||
     "overcast" ||
@@ -84,6 +84,12 @@ function currentTemp(response) {
     let currentDescription = document.querySelector("#forcast");
     currentDescription.innerHTML = `Outlook: ❄ ${description}`;
   }
+
+  let currentIcon = document.querySelector("#icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let roundCurrentTemp = Math.round(response.data.main.temp);
   let h4 = document.querySelector("#current-temp");

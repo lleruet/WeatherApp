@@ -32,7 +32,7 @@ h2 {
   text-transform: capitalize;
 }
 .weatherIcon {
-  filter: brightness(0.3) opacity(40%);
+  filter: brightness(0.3) opacity(30%);
 }
 form {
   display: block;
