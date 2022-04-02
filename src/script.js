@@ -175,24 +175,27 @@ let currentCityButton = document.querySelector("#current-city");
 currentCityButton.addEventListener("click", currentLocationTemp);
 
 function displayForcast(response) {
-  console.log(response.data.daily.temp);
   let forecast = document.querySelector("#five-day-forecast");
 
   let fullForecast = `<div class="row">`;
 
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fir", "Sat", "Sun"];
-  days.forEach(function (day) {
+  let daysForecast = response.data.daily;
+  daysForecast.forEach(function (forecastDay) {
     fullForecast =
       fullForecast +
       `<div class="col">
-                🌤
-                <div>${day}</div>
-                20°-<strong>30°</strong>
+                ${forecastDay.weather[0].icon}
+                <div>${formatForecastDay(forecastDay.dt)}</div>
+                ${forecastDay.temp.min}°-<strong>${
+        forecastDay.temp.max
+      }°</strong>
               </div>`;
   });
   fullForecast = fullForecast + `</div>`;
   forecast.innerHTML = fullForecast;
 }
+
+function formatForecastDay(timestamp) {}
 
 function convert(event) {
   event.preventDefault();
