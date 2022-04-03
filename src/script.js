@@ -72,7 +72,10 @@ function currentTemp(response) {
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
     h1.innerHTML = `Get outdoors and stay sun safe today in ${location}!`;
-  } else if (response.data.weather[0].main === "Rain" || "Drizzle") {
+  } else if (
+    response.data.weather[0].main === "Rain" ||
+    response.data.weather[0].main === "Drizzle"
+  ) {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
     document.body.style.backgroundImage = "url('Images/rain.jpg')";
@@ -102,9 +105,9 @@ function currentTemp(response) {
     h1.innerHTML = `Snow men and sledding, it will be a winter wonderland in ${location} today!`;
   } else if (
     response.data.weather[0].main === "Mist" ||
-    "Dust" ||
-    "Haze" ||
-    "Fog"
+    response.data.weather[0].main === "Dust" ||
+    response.data.weather[0].main === "Haze" ||
+    response.data.weather[0].main === "Fog"
   ) {
     let location = response.data.name;
     let h1 = document.querySelector("h1");
@@ -113,7 +116,6 @@ function currentTemp(response) {
   }
 
   getForecast(response.data.coord);
-  displayForcast();
 }
 function displayForcast(answer) {
   let forecast = document.querySelector("#five-day-forecast");
